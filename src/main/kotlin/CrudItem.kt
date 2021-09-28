@@ -1,0 +1,1 @@
+open class CrudItem (var id: Int)

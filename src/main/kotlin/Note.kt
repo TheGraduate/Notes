@@ -3,6 +3,17 @@ class Note (id : Int,var title: String, var textNote : String): CrudItem(id) {
     val comments = mutableListOf<Comment>()
     val deleteComments = mutableListOf<Comment>()
 
+    fun restoreComment (idComment: Int): Boolean {
+
+        for (deleteComment in deleteComments) {
+            if (idComment == deleteComment.commentId) {
+                comments.add(deleteComment)
+                return true
+            }
+        }
+        return false
+    }
+
     fun editComment (idComment: Int, updateText: String): Boolean {
 
         for(commentInComments in comments) {
@@ -45,16 +56,6 @@ class Note (id : Int,var title: String, var textNote : String): CrudItem(id) {
         return null
     }
 
-    fun restoreComment (idComment: Int): Boolean {
-
-        for (deleteComment in deleteComments) {
-            if (idComment == deleteComment.commentId) {
-                comments.add(deleteComment)
-                return true
-            }
-        }
-        return false
-    }
 }
 
 
